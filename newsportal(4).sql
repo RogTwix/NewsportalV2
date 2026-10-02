@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2026 at 08:36 PM
+-- Generation Time: Oct 01, 2026 at 01:10 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -59,10 +59,11 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `news_id`, `text`, `date`) VALUES
-(1, 1, 'Good', '2019-11-18 00:00:00'),
-(2, 3, 'test', '2019-11-18 00:00:00'),
-(3, 3, 'test2', '2019-11-30 19:01:12'),
-(4, 4, 'test22', '2019-11-30 19:15:55');
+(5, 4, 'ddccds', '2026-10-01 08:21:49'),
+(6, 4, 'defd', '2026-10-01 08:25:55'),
+(7, 3, 'вув', '2026-10-01 09:04:33'),
+(8, 3, 'hehehe', '2026-10-01 09:55:54'),
+(9, 2, 'gegege', '2026-10-01 09:56:13');
 
 -- --------------------------------------------------------
 
@@ -97,13 +98,13 @@ INSERT INTO `news` (`id`, `title`, `text`, `picture`, `category_id`, `user_id`) 
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
+  `username` varchar(100) NOT NULL,
   `picture` blob DEFAULT NULL,
   `job` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `telefon` varchar(20) NOT NULL,
   `login` varchar(20) NOT NULL,
-  `parol` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `status` varchar(20) NOT NULL,
   `registration_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_estonian_ci;
@@ -112,9 +113,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `picture`, `job`, `email`, `telefon`, `login`, `parol`, `status`, `registration_date`) VALUES
-(1, 'Admin', NULL, 'Portal admin', 'admin@newsportal.ee', '+37251456', 'admin', 'admin', 'admin', '2019-11-05'),
-(2, 'Anonim', NULL, 'Portal anonim', 'admin@newsportal.ee', '+37251456', 'anonim', 'anonim', 'user', '2019-11-05');
+INSERT INTO `users` (`id`, `username`, `picture`, `job`, `email`, `telefon`, `login`, `password`, `status`, `registration_date`) VALUES
+(1, 'Admin', NULL, 'Portal admin', 'admin@newsportal.ee', '+37251456', 'admin', '$2y$12$pxB2ofiNZkxObmbBvBOyegwCJHCVFYhapjISsdYXUAj9Z1IH6pQW', 'admin', '2019-11-05'),
+(3, 'anonim', NULL, 'Portal anonim', 'user@newsportal.ee', '+37251456', 'anonim', '$2y$10$dYK1sCogKL/zZBef.V/gBeynL5mdt0QxZlwvEUBkS0jkdXYRMPHRa', 'user', '2019-11-05');
 
 --
 -- Indexes for dumped tables
@@ -145,7 +146,8 @@ ALTER TABLE `news`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -161,7 +163,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `news`
@@ -173,7 +175,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
