@@ -16,6 +16,17 @@ elseif($path == 'category' and isset($_GET['id'])) {
 elseif($path == 'news' and isset($_GET['id'])) {
     $response = Controller::NewsByID($_GET['id']);
 }
+//----------------register user
+elseif ($path == 'registerForm' )
+{   // form register
+
+    $response = Controller::registerForm();
+}
+elseif ($path == 'registerAnswer' )
+{   // register user
+
+    $response = Controller::registerUser();
+}
 elseif($path == 'insertcomment' and isset($_GET['comment'],$_GET['id']))
 {
     $response = Controller::InsertComment($_GET['comment'],$_GET['id']);

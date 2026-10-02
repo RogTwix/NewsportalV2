@@ -16,7 +16,18 @@ class Controller {
         $arr = News::getAllNews();
         include_once 'view/allnews.php';
     }
+//-----------------------------РЕГИСТРАЦИЯ
+public static function registerForm()
+{
+    include_once('view/formRegister.php');
+}
 
+public static function registerUser()
+{
+    $result = Register::registerUser();
+
+    include_once('view/answerRegister.php');
+}
     public static function NewsByCatID($id) {
         $arr = News::getNewsByCategoryID($id);
         include_once 'view/catnews.php';
